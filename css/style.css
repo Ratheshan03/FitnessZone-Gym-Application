@@ -1,116 +1,169 @@
-*
-{
-	margin:0;
-	padding:0;
-        font-family: "Times New Roman", Times, serif;
+/* Reset margins and paddings, set base font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif; /* Updated font */
 }
 
-/*body*/
-body
-{
-	overflow-y: scroll;
-	overflow-x: hidden;
-        
+/* General Body Settings */
+body {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background: linear-gradient(to bottom, #333, #6e6e6e); /* Subtle gradient background */
 }
 
-h3{
-    text-shadow: 2px 1px grey;
+/* Headers */
+h3 {
+    text-shadow: 2px 1px rgba(0, 0, 0, 0.5); /* Enhanced shadow for text */
 }
 
-/*headers*/
-.header
-{
-	background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(../img/fitness1.jpg);
-	height:80vh;
-	background-position:center;
-	background-size:cover;
+/* Header Section */
+.header2 {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(./img/fitness1.jpg);
+    height: 40vh;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
-.header2
-{
-	background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(./img/fitness1.jpg?);
-	height:40vh;
-	background-position:center;
-	background-size:cover;
-	background-attachment:fixed;
-}
-
-
-/*navbar*/
-.navbar{
-	background-color:white;
+/* Navbar */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.6); /* Transparent black for glass effect */
+    backdrop-filter: blur(10px); /* Glassmorphism effect */
+    border-radius: 10px;
 }
 
 .navbar-brand {
-font-family: "Brush Script MT", "Brush Script Std", cursive;
+    font-family: 'Brush Script MT', cursive;
+    color: white;
 }
 
-.navbar .navbar-nav .active{
-	border-bottom:1px solid  white;
+.navbar .navbar-nav .active {
+    border-bottom: 2px solid #ff5733; /* Accent color for active link */
 }
 
-.navbar .navbar-nav .nav-item a{
-	color:#3A3B3B;
+.navbar .navbar-nav .nav-item a {
+    color: white;
 }
 
-.navbar .navbar-nav .nav-item a:hover{
-	background-color: #d1c8c8;
-	color:black;
+.navbar .navbar-nav .nav-item a:hover {
+    background-color: #d1c8c8;
+    color: black;
+    text-decoration: none;
 }
 
-.navbar .navbar-nav  li a{
+.navbar .navbar-nav li a {
+    text-decoration: none;
 }
 
-
-
-.header-button .btn{
-    
-margin-top:40vh;
+/* Header Button Styling */
+.header-button .btn {
+    margin-top: 40vh;
 }
 
-
+/* Row Margin */
 .row {
-  margin: 15px;
+    margin: 15px;
 }
 
+/* Navigation Links */
 .nav-link {
-	cursor:pointer;
+    cursor: pointer;
 }
 
-/*footer*/
-.footer{
-padding-top:30px;
-padding-bottom:30px;
-color:black;
-}
-
-.social-icon a{
-	margin:0 16px 20px 16px;
-	display:inline-block;
-}
-
-.social-icon .fa{
-
-	color:black;
-	width:50px;
-	height:50px;
-	border-radius:50%;
-	background:lightgray;
-	line-height: 2;
-	transition: .3s;
-	border:10px solid lightgray;
-}
-
-.social-icon a:hover .fa{
-	border:10px solid black;
-}
-
-.bordernow{
-	width:80px;
-	border-bottom:2px solid white;
-	margin:0 auto;
-	margin-top:20px;
+/* Footer */
+.footer {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background: rgba(0, 0, 0, 0.6); /* Glassmorphism effect */
+    backdrop-filter: blur(10px);
+    color: white;
+    border-radius: 10px;
+    text-align: center;
 }
 
 
+.footer .copyright {
+    margin-top: 20px;
+}
 
+.footer .contact-us a {
+    font-size: 16px;
+    background-color: #ff5733;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.footer .contact-us a:hover {
+    background-color: #e13c1e;
+}
+
+/* Section for separating elements */
+.bordernow {
+    width: 80px;
+    border-bottom: 2px solid white;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+/* Additional Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+
+/* Facilities Section */
+.facilities-section {
+    background: #f9f9f9; /* Light background for the section */
+    padding: 50px 0;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+.facilities-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    justify-items: center;
+}
+
+.facility-card {
+    background: rgba(0, 0, 0, 0.3); /* Slight transparency for the cards */
+    backdrop-filter: blur(10px); /* Glassmorphism effect */
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.facility-card h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.facility-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.facility-card:hover {
+    transform: translateY(-10px); /* Lift effect on hover */
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+}
+
+.btn-view-more {
+    display: inline-block;
+    background-color: #ff5733; /* Accent color */
+    color: white;
+    padding: 10px 25p
+}

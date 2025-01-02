@@ -46,7 +46,7 @@ if (isset($_POST['login-submit'])) {
                         if ($_SESSION['role'] === 'staff') {
                             header("Location: ../staff.php?login=success");
                         } else {
-                            header("Location: ../reservation.php?login=success");
+                            header("Location: ../appointments.php?login=success");
                         }
                         exit();
                     } else {
