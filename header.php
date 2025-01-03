@@ -76,7 +76,7 @@ session_start();
                 <li class="nav-item"><a class="nav-link" href="index.php#aboutus">About Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="index.php#facilities">Facilities</a></li>
                 <li class="nav-item"><a class="nav-link" href="blogs.php">Blogs</a></li>
-                <li class="nav-item"><a class="nav-link" href="subscriptions.php">Subscriptions</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.php#subscriptions">Subscriptions</a></li>
                 <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li> <!-- New Contact Us link -->
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <li class="nav-item"><a class="nav-link" href="appointments.php">Book Appointment</a></li>
@@ -146,7 +146,7 @@ session_start();
     </div>
 
     <!-- Register Modal -->
-    <div class="modal fade" id="myModal_reg">
+    <div class="modal fade" id="myModal_reg" style="color: black;">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">

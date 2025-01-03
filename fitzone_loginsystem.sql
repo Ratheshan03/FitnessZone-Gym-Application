@@ -88,6 +88,7 @@ CREATE TABLE blogs (
     content TEXT NOT NULL,
     author_id INT,
     category ENUM('workout_routines', 'healthy_recipes', 'meal_plans', 'success_stories') NOT NULL,
+    image_url VARCHAR(255),
     FOREIGN KEY (author_id) REFERENCES users(user_id)
         ON DELETE SET NULL
         ON UPDATE CASCADE,
@@ -133,7 +134,9 @@ VALUES
 (NULL, 'Class Schedules', 'What are the timings for Yoga classes?', 'Monday, Wednesday, Friday: 8 AM - 9 AM', 'closed');
 
 -- Insert dummy blogs
-INSERT INTO blogs (title, content, author_id, category)
+INSERT INTO blogs (title, content, author_id, category, image_url)
 VALUES 
-('5 Best Exercises for Beginners', 'Here are the top 5 exercises...', 1, 'workout_routines'),
-('Healthy Breakfast Recipes', 'Start your day with these recipes...', 1, 'healthy_recipes');
+('5 Best Exercises for Beginners', 'Here are the top 5 exercises...', 1, 'workout_routines', 'img/exercise.jpg'),
+('Healthy Breakfast Recipes', 'Start your day with these recipes...', 1, 'healthy_recipes', 'img/breakfast.jpg'),
+('Meal Plans for Weight Loss', 'Follow this guide to plan your meals...', 1, 'meal_plans', 'img/meal_plans.jpg'),
+('Success Story: John Doe', 'John transformed his life with fitness...', 2, 'success_stories', 'img/success.jpg');

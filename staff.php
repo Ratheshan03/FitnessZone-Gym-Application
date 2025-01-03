@@ -12,7 +12,7 @@ require 'includes/dbh.inc.php';
 // Handle appointment approval
 if (isset($_POST['approve-appointment'])) {
     $appointment_id = intval($_POST['appointment_id']);
-    $sql = "UPDATE appointments SET status = 'Approved' WHERE id = ?";
+    $sql = "UPDATE appointments SET status = 'Approved' WHERE appointment_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $appointment_id);
     if ($stmt->execute()) {
@@ -26,7 +26,7 @@ if (isset($_POST['approve-appointment'])) {
 // Handle appointment deletion
 if (isset($_POST['delete-appointment'])) {
     $appointment_id = intval($_POST['appointment_id']);
-    $sql = "DELETE FROM appointments WHERE id = ?";
+    $sql = "DELETE FROM appointments WHERE appointment_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $appointment_id);
     if ($stmt->execute()) {
@@ -51,19 +51,48 @@ if (isset($_POST['delete-customer'])) {
     }
 }
 
-// Retrieve appointments
-$appointments_sql = "SELECT * FROM appointments ORDER BY appointment_date ASC";
-$appointments_result = $conn->query($appointments_sql);
-if (!$appointments_result) {
-    die("Error fetching appointments: " . $conn->error);
+// Handle blog creation
+if (isset($_POST['add-blog'])) {
+    $title = $_POST['title'];
+    $content = $_POST['content'];
+    $category = $_POST['category'];
+    $author_id = $_SESSION['user_id'];
+    $image_url = $_POST['image_url'];
+
+    $sql = "INSERT INTO blogs (title, content, author_id, category, image_url) VALUES (?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssiss", $title, $content, $author_id, $category, $image_url);
+    if ($stmt->execute()) {
+        header("Location: staff.php?msg=blogadded");
+        exit();
+    } else {
+        die("Error: " . $stmt->error);
+    }
 }
 
-// Retrieve customers
-$customers_sql = "SELECT * FROM users";
-$customers_result = $conn->query($customers_sql);
-if (!$customers_result) {
-    die("Error fetching customers: " . $conn->error);
+// Handle blog deletion
+if (isset($_POST['delete-blog'])) {
+    $blog_id = intval($_POST['blog_id']);
+    $sql = "DELETE FROM blogs WHERE blog_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $blog_id);
+    if ($stmt->execute()) {
+        header("Location: staff.php?msg=blogdeleted");
+        exit();
+    } else {
+        die("Error: " . $stmt->error);
+    }
 }
+
+// Retrieve data
+$appointments_sql = "SELECT * FROM appointments ORDER BY appointment_date ASC";
+$appointments_result = $conn->query($appointments_sql);
+
+$customers_sql = "SELECT * FROM users WHERE role = 'customer'";
+$customers_result = $conn->query($customers_sql);
+
+$blogs_sql = "SELECT * FROM blogs ORDER BY created_at DESC";
+$blogs_result = $conn->query($blogs_sql);
 ?>
 
 <!DOCTYPE html>
@@ -71,11 +100,27 @@ if (!$customers_result) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staff Dashboard - FitZone Fitness Center</title>
+    <title>Staff Dashboard</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            background: linear-gradient(to right, #e2e2e2, #ffffff);
+            background: linear-gradient(to right, #6a5b5b, #a55d5d);
+            color: white;
+        }
+        .navbar {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        .sidebar {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .btn {
+            margin: 5px;
+        }
+        .table th, .table td {
+            color: white;
         }
         .section-content {
             display: none;
@@ -83,70 +128,57 @@ if (!$customers_result) {
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="#">Staff Dashboard</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="staff.php">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php">Logout</a>
-                </li>
+                <li class="nav-item"><a class="nav-link" href="staff.php">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.php">Logout</a></li>
             </ul>
         </div>
     </nav>
 
-    <div class="container-fluid">
+    <div class="container-fluid mt-5">
         <div class="row">
-            <nav id="sidebar" class="col-md-2 d-md-block bg-light sidebar">
-                <div class="sidebar-sticky">
-                    <h4 class="sidebar-heading">Management</h4>
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="toggleSection('appointments')">Appointments</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="toggleSection('customers')">Customers</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            <div class="col-md-3 sidebar">
+                <h4>Management</h4>
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="toggleSection('appointments')">Appointments</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="toggleSection('customers')">Customers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="toggleSection('blogs')">Manage Blogs</a></li>
+                </ul>
+            </div>
 
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="col-md-9">
                 <!-- Appointments Section -->
                 <div id="appointments" class="section-content">
                     <h2>Appointments</h2>
-                    <table class="table table-hover table-responsive-sm text-center">
+                    <table class="table table-hover table-bordered">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Customer Name</th>
                                 <th>Date</th>
-                                <th>Time</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php while ($appointment = $appointments_result->fetch_assoc()) : ?>
-                            <tr>
-                                <form action="staff.php" method="POST">
-                                    <input type="hidden" name="appointment_id" value="<?php echo htmlspecialchars($appointment['id']); ?>">
-                                    <td><?php echo htmlspecialchars($appointment['id']); ?></td>
-                                    <td><?php echo htmlspecialchars($appointment['customer_name']); ?></td>
-                                    <td><?php echo htmlspecialchars($appointment['appointment_date']); ?></td>
-                                    <td><?php echo htmlspecialchars($appointment['appointment_time']); ?></td>
-                                    <td><?php echo htmlspecialchars($appointment['status']); ?></td>
-                                    <td>
-                                        <button type="submit" name="approve-appointment" class="btn btn-success btn-sm">Approve</button>
-                                        <button type="submit" name="delete-appointment" class="btn btn-danger btn-sm">Delete</button>
-                                    </td>
-                                </form>
-                            </tr>
+                                <tr>
+                                    <form action="staff.php" method="POST">
+                                        <input type="hidden" name="appointment_id" value="<?php echo $appointment['appointment_id']; ?>">
+                                        <td><?php echo $appointment['appointment_id']; ?></td>
+                                        <td><?php echo $appointment['appointment_date']; ?></td>
+                                        <td><?php echo $appointment['status']; ?></td>
+                                        <td>
+                                            <button type="submit" name="approve-appointment" class="btn btn-success btn-sm">Approve</button>
+                                            <button type="submit" name="delete-appointment" class="btn btn-danger btn-sm">Delete</button>
+                                        </td>
+                                    </form>
+                                </tr>
                             <?php endwhile; ?>
                         </tbody>
                     </table>
@@ -155,7 +187,7 @@ if (!$customers_result) {
                 <!-- Customers Section -->
                 <div id="customers" class="section-content">
                     <h2>Customers</h2>
-                    <table class="table table-hover table-responsive-sm text-center">
+                    <table class="table table-hover table-bordered">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -166,36 +198,81 @@ if (!$customers_result) {
                         </thead>
                         <tbody>
                             <?php while ($customer = $customers_result->fetch_assoc()) : ?>
-                            <tr>
-                                <form action="staff.php" method="POST">
-                                    <input type="hidden" name="user_id" value="<?php echo htmlspecialchars($customer['user_id']); ?>">
-                                    <td><?php echo htmlspecialchars($customer['user_id']); ?></td>
-                                    <td><?php echo htmlspecialchars($customer['uidUsers']); ?></td>
-                                    <td><?php echo htmlspecialchars($customer['emailUsers']); ?></td>
-                                    <td>
-                                        <button type="submit" name="delete-customer" class="btn btn-danger btn-sm">Delete</button>
-                                    </td>
-                                </form>
-                            </tr>
+                                <tr>
+                                    <form action="staff.php" method="POST">
+                                        <input type="hidden" name="user_id" value="<?php echo $customer['user_id']; ?>">
+                                        <td><?php echo $customer['user_id']; ?></td>
+                                        <td><?php echo $customer['username']; ?></td>
+                                        <td><?php echo $customer['email']; ?></td>
+                                        <td>
+                                            <button type="submit" name="delete-customer" class="btn btn-danger btn-sm">Delete</button>
+                                        </td>
+                                    </form>
+                                </tr>
                             <?php endwhile; ?>
                         </tbody>
                     </table>
                 </div>
-            </main>
+
+                <!-- Blogs Section -->
+                <div id="blogs" class="section-content">
+                    <h2>Manage Blogs</h2>
+                    <form action="staff.php" method="POST">
+                        <div class="form-group">
+                            <label>Blog Title</label>
+                            <input type="text" class="form-control" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Content</label>
+                            <textarea class="form-control" name="content" rows="4" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select class="form-control" name="category" required>
+                                <option value="workout_routines">Workout Routines</option>
+                                <option value="healthy_recipes">Healthy Recipes</option>
+                                <option value="meal_plans">Meal Plans</option>
+                                <option value="success_stories">Success Stories</option>
+                            </select>
+                        </div>
+                        <button type="submit" name="add-blog" class="btn btn-success">Add Blog</button>
+                    </form>
+                    <hr>
+                    <h3>Existing Blogs</h3>
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Created At</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php while ($blog = $blogs_result->fetch_assoc()) : ?>
+                                <tr>
+                                    <form action="staff.php" method="POST">
+                                        <input type="hidden" name="blog_id" value="<?php echo $blog['blog_id']; ?>">
+                                        <td><?php echo $blog['title']; ?></td>
+                                        <td><?php echo $blog['category']; ?></td>
+                                        <td><?php echo $blog['created_at']; ?></td>
+                                        <td>
+                                            <button type="submit" name="delete-blog" class="btn btn-danger btn-sm">Delete</button>
+                                        </td>
+                                    </form>
+                                </tr>
+                            <?php endwhile; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         function toggleSection(id) {
-            var sections = document.querySelectorAll('.section-content');
-            sections.forEach(function(section) {
-                section.style.display = 'none';
-            });
-            var section = document.getElementById(id);
-            section.style.display = (section.style.display === 'none' || section.style.display === '') ? 'block' : 'none';
+            document.querySelectorAll('.section-content').forEach(section => section.style.display = 'none');
+            document.getElementById(id).style.display = 'block';
         }
     </script>
 </body>
