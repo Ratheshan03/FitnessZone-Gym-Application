@@ -242,7 +242,7 @@ require "header.php";
             <!-- Subscription Package 1 -->
             <div class="col-md-4 mb-4">
                 <div class="card" style="background-color: #333; border-radius: 10px; padding: 20px; height: 800px;">
-                    <img src="img/placeholder1.jpg" alt="Basic Package" class="card-img-top" style="height: 250px; object-fit: cover; border-radius: 10px;">
+                    <img src="img/sub1.jpg" alt="Basic Package" class="card-img-top" style="height: 250px; object-fit: cover; border-radius: 10px;">
                     <div class="card-body">
                         <h4 class="card-title" style="font-size: 1.8rem; color: #f0f0f0; text-align: center;">Basic Package</h4>
                         <p class="card-text" style="line-height: 1.8; font-size: 1.1rem; color: #d9d9d9;">
@@ -264,7 +264,7 @@ require "header.php";
             <!-- Subscription Package 2 -->
             <div class="col-md-4 mb-4">
                 <div class="card" style="background-color: #333; border-radius: 10px; padding: 20px; height: 800px;">
-                    <img src="img/placeholder2.jpg" alt="Standard Package" class="card-img-top" style="height: 250px; object-fit: cover; border-radius: 10px;">
+                    <img src="img/sub2.jpg" alt="Standard Package" class="card-img-top" style="height: 250px; object-fit: cover; border-radius: 10px;">
                     <div class="card-body">
                         <h4 class="card-title" style="font-size: 1.8rem; color: #f0f0f0; text-align: center;">Standard Package</h4>
                         <p class="card-text" style="line-height: 1.8; font-size: 1.1rem; color: #d9d9d9;">
@@ -287,7 +287,7 @@ require "header.php";
             <!-- Subscription Package 3 -->
             <div class="col-md-4 mb-4">
                 <div class="card" style="background-color: #333; border-radius: 10px; padding: 20px; height: 800px;">
-                    <img src="img/placeholder3.jpg" alt="Premium Package" class="card-img-top" style="height: 250px; object-fit: cover; border-radius: 10px;">
+                    <img src="img/sub3.jpg" alt="Premium Package" class="card-img-top" style="height: 250px; object-fit: cover; border-radius: 10px;">
                     <div class="card-body">
                         <h4 class="card-title" style="font-size: 1.8rem; color: #f0f0f0; text-align: center;">Premium Package</h4>
                         <p class="card-text" style="line-height: 1.8; font-size: 1.1rem; color: #d9d9d9;">
