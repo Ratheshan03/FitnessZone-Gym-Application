@@ -41,13 +41,13 @@ CREATE TABLE fitness_classes (
 -- Table: trainers
 CREATE TABLE trainers (
     trainer_id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
+    trainer_name VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(15) NOT NULL,
     specialty VARCHAR(255),
     certification_details TEXT,
     pricing_packages TEXT,
-    FOREIGN KEY (user_id) REFERENCES users(user_id)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
+    image_url VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Table: appointments
@@ -117,9 +117,12 @@ VALUES
 ('Strength Training', 'Full-body strength training', 'Saturday: 10 AM - 11 AM', NULL);
 
 -- Insert dummy trainers
-INSERT INTO trainers (user_id, specialty, certification_details, pricing_packages)
+INSERT INTO trainers (trainer_name, phone_number, specialty, certification_details, pricing_packages, image_url)
 VALUES 
-(3, 'Yoga and Cardio Specialist', 'Certified Yoga Trainer, Certified Cardio Instructor', 'Yoga: $30/session, Cardio: $25/session');
+('Alice Smith', '0711234567', 'Yoga and Cardio Specialist', 'Certified Yoga Trainer, Certified Cardio Instructor', 'Yoga: $30/session, Cardio: $25/session', 'img/trainers/alice.jpg'),
+('Bob Johnson', '0723456789', 'Strength Training Expert', 'Certified Strength Trainer', 'Strength Training: $40/session', 'img/trainers/bob.jpg'),
+('Charlie Brown', '0734567890', 'Nutrition and Wellness Coach', 'Certified Nutritionist, Wellness Expert', 'Nutrition Counseling: $50/session', 'img/trainers/charlie.jpg'),
+('David Lee', '0745678901', 'Personal Trainer', 'Certified Personal Trainer', 'Personal Training: $45/session', 'img/trainers/david.jpg');
 
 -- Insert dummy appointments
 INSERT INTO appointments (user_id, service_type, class_id, appointment_date, status)

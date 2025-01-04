@@ -56,6 +56,11 @@ session_start();
         .modal-body h5 {
             text-align: center;
         }
+
+        .modal-body h4{
+            color:rgb(0, 0, 0);
+        }
+
         .bg-danger, .bg-success {
             margin-bottom: 20px;
         }
@@ -74,16 +79,15 @@ session_start();
             <ul class="navbar-nav">
                 <!-- Always show navigation options -->
                 <li class="nav-item"><a class="nav-link" href="index.php#aboutus">About Us</a></li>
-                <li class="nav-item"><a class="nav-link" href="index.php#facilities">Facilities</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.php#facilities">Services</a></li>
                 <li class="nav-item"><a class="nav-link" href="blogs.php">Blogs</a></li>
-                <li class="nav-item"><a class="nav-link" href="index.php#subscriptions">Subscriptions</a></li>
+                <li class="nav-item"><a class="nav-link" href="appointments.php">Bookings</a></li>
                 <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li> <!-- New Contact Us link -->
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <li class="nav-item"><a class="nav-link" href="appointments.php">Book Appointment</a></li>
                     <li class="nav-item"><a class="nav-link" href="view_appointments.php">View Appointments</a></li>
                     <?php if ($_SESSION['role'] == 'staff'): ?>
-                        <li class="nav-item"><a class="nav-link" href="manage_classes.php">Manage Classes</a></li>
-                        <li class="nav-item"><a class="nav-link" href="manage_schedule.php">Manage Schedule</a></li>
+                        <li class="nav-item"><a class="nav-link" href="schedule.php">Manage Schedule</a></li>
                     <?php endif; ?>
                 <?php endif; ?>
             </ul>

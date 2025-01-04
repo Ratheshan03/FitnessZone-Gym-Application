@@ -47,7 +47,7 @@ require "header.php";
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
-                text: 'Sign up successful! Redirecting...',
+                text: 'Sign up successful! You can now log in.',
                 timer: 2000,
                 showConfirmButton: false
             }).then(() => {

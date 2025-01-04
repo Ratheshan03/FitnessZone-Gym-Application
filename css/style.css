@@ -31,7 +31,6 @@ h3 {
 .navbar {
     background-color: rgba(0, 0, 0, 0.6); /* Transparent black for glass effect */
     backdrop-filter: blur(10px); /* Glassmorphism effect */
-    border-radius: 10px;
 }
 
 .navbar-brand {
