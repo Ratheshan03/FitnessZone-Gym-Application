@@ -119,10 +119,10 @@ VALUES
 -- Insert dummy trainers
 INSERT INTO trainers (trainer_name, phone_number, specialty, certification_details, pricing_packages, image_url)
 VALUES 
-('Alice Smith', '0711234567', 'Yoga and Cardio Specialist', 'Certified Yoga Trainer, Certified Cardio Instructor', 'Yoga: $30/session, Cardio: $25/session', 'img/trainers/alice.jpg'),
-('Bob Johnson', '0723456789', 'Strength Training Expert', 'Certified Strength Trainer', 'Strength Training: $40/session', 'img/trainers/bob.jpg'),
-('Charlie Brown', '0734567890', 'Nutrition and Wellness Coach', 'Certified Nutritionist, Wellness Expert', 'Nutrition Counseling: $50/session', 'img/trainers/charlie.jpg'),
-('David Lee', '0745678901', 'Personal Trainer', 'Certified Personal Trainer', 'Personal Training: $45/session', 'img/trainers/david.jpg');
+('Alice Smith', '0711234567', 'Yoga and Cardio Specialist', 'Certified Yoga Trainer, Certified Cardio Instructor', 'Yoga: $30/session, Cardio: $25/session', 'img/trainers/trainer_alice.jpg'),
+('Bob Johnson', '0723456789', 'Strength Training Expert', 'Certified Strength Trainer', 'Strength Training: $40/session', 'img/trainers/trainer_bob.jpg'),
+('Charlie Brown', '0734567890', 'Nutrition and Wellness Coach', 'Certified Nutritionist, Wellness Expert', 'Nutrition Counseling: $50/session', 'img/trainers/trainer_charlie.jpg'),
+('David Lee', '0745678901', 'Personal Trainer', 'Certified Personal Trainer', 'Personal Training: $45/session', 'img/trainers/trainer_david.jpg');
 
 -- Insert dummy appointments
 INSERT INTO appointments (user_id, service_type, class_id, appointment_date, status)
@@ -139,7 +139,7 @@ VALUES
 -- Insert dummy blogs
 INSERT INTO blogs (title, content, author_id, category, image_url)
 VALUES 
-('5 Best Exercises for Beginners', 'Here are the top 5 exercises...', 1, 'workout_routines', 'img/exercise.jpg'),
-('Healthy Breakfast Recipes', 'Start your day with these recipes...', 1, 'healthy_recipes', 'img/breakfast.jpg'),
-('Meal Plans for Weight Loss', 'Follow this guide to plan your meals...', 1, 'meal_plans', 'img/meal_plans.jpg'),
-('Success Story: John Doe', 'John transformed his life with fitness...', 2, 'success_stories', 'img/success.jpg');
+('5 Best Exercises for Beginners', 'Here are the top 5 exercises...', 1, 'workout_routines', 'img/blog-images/exercise.jpg'),
+('Healthy Breakfast Recipes', 'Start your day with these recipes...', 1, 'healthy_recipes', 'img/blog-images/breakfast.jpg'),
+('Meal Plans for Weight Loss', 'Follow this guide to plan your meals...', 1, 'meal_plans', 'img/blog-images/meal_plans.jpg'),
+('Success Story: John Doe', 'John transformed his life with fitness...', 2, 'success_stories', 'img/blog-images/success.jpg');
