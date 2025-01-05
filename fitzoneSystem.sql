@@ -11,6 +11,14 @@ CREATE TABLE IF NOT EXISTS users (
     email VARCHAR(100) NOT NULL UNIQUE,
     phone_number VARCHAR(15),
     role ENUM('customer', 'staff', 'admin') NOT NULL DEFAULT 'customer',
+    age INT NULL,
+    address VARCHAR(255) NULL,
+    height DECIMAL(5, 2) NULL,
+    weight DECIMAL(5, 2) NULL,
+    guardian_name VARCHAR(255) NULL,
+    fullname VARCHAR(255) NULL,
+    image_url VARCHAR(255) NULL,
+    subscription ENUM('basic', 'standard', 'premium') NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

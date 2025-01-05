@@ -20,7 +20,7 @@ session_start();
     <style>
         /* Global styles for the header */
         body {
-            background: linear-gradient(to right, #6a5b5b, #a55d5d); /* Gradient background */
+            background: linear-gradient(to right, #2c2c2c, #1a1a1a);
             color: white;
             font-family: 'Arial', sans-serif;
         }
@@ -97,6 +97,7 @@ session_start();
             </ul>
             <ul class="navbar-nav ml-auto">
                 <?php if (isset($_SESSION['user_id'])): ?>
+                    <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
                     <form class="form-inline" action="includes/logout.inc.php" method="post">
                         <button type="submit" name="logout-submit" class="btn btn-outline-light">Logout</button>
                     </form>
