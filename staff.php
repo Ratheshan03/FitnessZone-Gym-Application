@@ -117,6 +117,7 @@ $customers_result = $conn->query($customers_sql);
 $blogs_sql = "SELECT * FROM blogs ORDER BY created_at DESC";
 $blogs_result = $conn->query($blogs_sql);
 
+// Retrieve inquiries
 $inquiries_sql = "
     SELECT 
         inquiries.inquiry_id, 
@@ -130,6 +131,7 @@ $inquiries_sql = "
     WHERE inquiries.status = 'open'
     ORDER BY created_at DESC";
 $inquiries_result = $conn->query($inquiries_sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -201,6 +203,7 @@ $inquiries_result = $conn->query($inquiries_sql);
                     <li class="nav-item"><a class="nav-link" href="#" onclick="toggleSection('appointments')">Appointments</a></li>
                     <li class="nav-item"><a class="nav-link" href="#" onclick="toggleSection('customers')">Customers</a></li>
                     <li class="nav-item"><a class="nav-link" href="#" onclick="toggleSection('blogs')">Manage Blogs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="toggleSection('inquiries')">Inquiries</a></li>
                 </ul>
             </div>
 

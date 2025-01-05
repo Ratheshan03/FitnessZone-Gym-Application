@@ -170,7 +170,7 @@ require "header.php";
         <div class="row">
             <!-- Classes Section -->
             <div class="col-md-4 mb-4">
-                <div class="content-box" style="padding: 30px; background-color: #333; border-radius: 10px; color: white; height: 500px;">
+                <div class="content-box" style="padding: 30px; background-color: #333; border-radius: 10px; color: white; height: 600px;">
                     <h4 class="text-center" style="font-size: 1.8rem; font-weight: bold; margin-bottom: 20px;">Group Classes</h4>
                     <ul style="font-size: 1.1rem; line-height: 1.8;">
                         <li>Cardio</li>
@@ -186,7 +186,7 @@ require "header.php";
 
             <!-- Personal Training Section -->
             <div class="col-md-4 mb-4">
-                <div class="content-box" style="padding: 30px; background-color: #333; border-radius: 10px; color: white; height: 500px;">
+                <div class="content-box" style="padding: 30px; background-color: #333; border-radius: 10px; color: white; height: 600px;">
                     <h4 class="text-center" style="font-size: 1.8rem; font-weight: bold; margin-bottom: 20px;">Personal Training</h4>
                     <p style="font-size: 1.1rem; line-height: 1.8;">
                         Our certified trainers specialize in various fitness areas, including:
@@ -205,7 +205,7 @@ require "header.php";
 
             <!-- Gym Equipment Section -->
             <div class="col-md-4 mb-4">
-                <div class="content-box" style="padding: 30px; background-color: #333; border-radius: 10px; color: white; height: 500px;">
+                <div class="content-box" style="padding: 30px; background-color: #333; border-radius: 10px; color: white; height: 600px;">
                     <h4 class="text-center" style="font-size: 1.8rem; font-weight: bold; margin-bottom: 20px;">State-of-the-Art Equipment</h4>
                     <p style="font-size: 1.1rem; line-height: 1.8;">
                         We provide advanced gym equipment to enhance your training experience:
@@ -249,14 +249,13 @@ require "header.php";
                             Perfect for beginners! Includes full access to the gym floor and basic fitness equipment.
                         </p>
                         <p class="card-text" style="line-height: 1.8; font-size: 1.1rem; color: #d9d9d9;">
-                            <b>Price:</b> <span style="color:rgb(250, 130, 130);" >$30/month</span><br>
+                            <b>Price:</b> <span style="color:rgb(250, 130, 130);">$30/month</span><br>
                             <b>Features:</b><br>
                             - Access to gym equipment<br>
                             - Basic fitness consultation<br>
                             - Group fitness classes<br>
                             - Limited hours (9 AM - 6 PM)
                         </p>
-                        <button class="btn btn-outline-light btn-block" style="background-color: #d9d9d9; color: black;" onclick="window.location.href='contactus.php';">Inquire Now</button>
                     </div>
                 </div>
             </div>
@@ -271,7 +270,7 @@ require "header.php";
                             Ideal for those looking to level up their fitness. Includes additional classes and personal training.
                         </p>
                         <p class="card-text" style="line-height: 1.8; font-size: 1.1rem; color: #d9d9d9;">
-                            <b>Price:</b> <span style="color:rgb(250, 130, 130);" >$50/month</span><br>
+                            <b>Price:</b> <span style="color:rgb(250, 130, 130);">$50/month</span><br>
                             <b>Features:</b><br>
                             - Full access to gym equipment<br>
                             - Group fitness classes<br>
@@ -279,7 +278,6 @@ require "header.php";
                             - Priority booking for classes<br>
                             - 24/7 access
                         </p>
-                        <button class="btn btn-outline-light btn-block" style="background-color: #d9d9d9; color: black;" onclick="window.location.href='contactus.php';">Inquire Now</button>
                     </div>
                 </div>
             </div>
@@ -294,7 +292,7 @@ require "header.php";
                             The ultimate fitness experience. Includes unlimited personal training, nutrition plans, and more.
                         </p>
                         <p class="card-text" style="line-height: 1.8; font-size: 1.1rem; color: #d9d9d9;">
-                            <b>Price:</b><span style="color:rgb(250, 130, 130); " > $100/month</span> <br>
+                            <b>Price:</b> <span style="color:rgb(250, 130, 130);">$100/month</span><br>
                             <b>Features:</b><br>
                             - Unlimited access to gym equipment<br>
                             - Unlimited group fitness classes<br>
@@ -302,18 +300,19 @@ require "header.php";
                             - Custom nutrition plans<br>
                             - Priority booking for all services
                         </p>
-                        <button class="btn btn-outline-light btn-block" style="background-color: #d9d9d9; color: black;" onclick="window.location.href='contactus.php';">Inquire Now</button>
                     </div>
                 </div>
             </div>
-
         </div>
-        <!-- <div class="text-center">
-            <button class="btn btn-outline-light" style="background-color:rgb(99, 99, 99); color: black;" onclick="window.location.href='contactus.php';">For Inquiries</button>
-        </div> -->
+
+        <!-- Single Inquire Now Button -->
+        <div class="text-center mt-4">
+            <button class="btn btn-outline-light btn-lg" style="background-color:rgb(132, 132, 132); color: black; width: 300px on-hover:background-color:rgb(180, 180, 180);" onclick="window.location.href='contact.php';">
+                Inquire Now
+            </button>
+        </div>
     </div>
 </section>
-<!-- End of Subscriptions and Packages Section -->
 
 
 <!-- Appointments Section -->
@@ -346,7 +345,7 @@ require "header.php";
                         <strong>Phone:</strong> +1 800 123 4567<br>
                         <strong>Address:</strong> 123 FitZone Street, Kurunegala
                     </p>
-                    <button type="button" onclick="window.location.href='contact-us.php'" class="btn btn-outline-dark btn-block btn-lg" style="border-radius: 5px; font-weight: bold; padding: 15px; margin-top: 20px; background-color: #f8f9fa; color: #333; border: 2px solid #333; transition: all 0.3s ease;">
+                    <button type="button" onclick="window.location.href='contact.php'" class="btn btn-outline-dark btn-block btn-lg" style="border-radius: 5px; font-weight: bold; padding: 15px; margin-top: 20px; background-color: #f8f9fa; color: #333; border: 2px solid #333; transition: all 0.3s ease;">
                         Contact Us
                     </button>
                 </div>
@@ -449,8 +448,8 @@ require "header.php";
                 <h4 style="color:rgb(27, 27, 27); font-weight: bold; margin-bottom: 20px;">Visit Us</h4>
                 <p style="font-size: 1.1rem; color:rgb(56, 55, 55); line-height: 1.8;">
                     FitZone Fitness Center<br>
-                    <i class="fa fa-map-marker"></i>&nbsp; No. 123, Kurunegala Main Street<br>
-                    Kurunegala<br><br>
+                    <i class="fa fa-map-marker"></i>&nbsp; No. 123, Kurunegala Main Street, <br>
+                    Kurunegala, Sri Lanka<br><br>
                 </p>
             </div>
         </div>

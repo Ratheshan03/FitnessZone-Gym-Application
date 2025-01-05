@@ -10,11 +10,11 @@
                     <a href="index.php" class="social-link"><i class="fa fa-linkedin"></i></a>
                 </div>
                 <div class="copyright">
-                    <p>Copyright.2025 &copy; <b>FitZone Fitness Center</b></p>
+                    <p><b>Copyright 2025 &copy; FitZone Fitness Center</b></p>
                     <p><i class="fa fa-phone"></i> 076-123-4567 &nbsp;<i class="fa fa-envelope-o"></i> fitzone@gmail.com</p>
                 </div>
                 <div class="contact-us">
-                    <a href="contactus.php" class="btn btn-outline-light">Contact Us</a>
+                    <a href="contact.php" class="btn btn-outline-light">Contact Us</a>
                 </div>
             </div>
         </div>

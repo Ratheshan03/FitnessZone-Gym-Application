@@ -88,6 +88,10 @@ session_start();
                     <li class="nav-item"><a class="nav-link" href="view_appointments.php">View Appointments</a></li>
                     <?php if ($_SESSION['role'] == 'staff'): ?>
                         <li class="nav-item"><a class="nav-link" href="schedule.php">Manage Schedule</a></li>
+                        <li class="nav-item"><a class="nav-link" href="staff.php">Dashboard</a></li>
+                    <?php endif; ?>
+                    <?php if ($_SESSION['role'] == 'admin'): ?>
+                        <li class="nav-item"><a class="nav-link" href="admin.php">Dashboard</a></li>
                     <?php endif; ?>
                 <?php endif; ?>
             </ul>
