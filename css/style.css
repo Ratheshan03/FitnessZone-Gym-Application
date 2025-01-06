@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif; /* Updated font */
+    font-family: 'Poppins', sans-serif;
 }
 
 /* General Body Settings */
@@ -89,7 +89,7 @@ h3 {
 
 .footer .contact-us a {
     font-size: 16px;
-    background-color: #ff5733;
+    background-color: #ff5252;
     color: white;
     padding: 10px 20px;
     border-radius: 5px;

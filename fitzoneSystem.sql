@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS users (
     guardian_name VARCHAR(255) NULL,
     fullname VARCHAR(255) NULL,
     image_url VARCHAR(255) NULL,
-    subscription ENUM('basic', 'standard', 'premium') NULL,
+    subscription ENUM('Basic', 'Standard', 'Premium') NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -118,9 +118,9 @@ VALUES
 -- Insert dummy membership plans
 INSERT INTO membership_plans (plan_name, price, duration_in_months, benefits, special_promotions)
 VALUES 
-('Basic Plan', 29.99, 1, 'Access to gym equipment', NULL),
-('Standard Plan', 59.99, 3, 'Access to gym equipment, group classes', '10% off for referrals'),
-('Premium Plan', 99.99, 6, 'Access to gym equipment, group classes, personal training', 'Free month on yearly subscription');
+('Basic', 29.99, 1, 'Access to gym equipment', NULL),
+('Standard', 59.99, 3, 'Access to gym equipment, group classes', '10% off for referrals'),
+('Premium', 99.99, 6, 'Access to gym equipment, group classes, personal training', 'Free month on yearly subscription');
 
 -- Insert dummy trainers
 INSERT INTO trainers (trainer_name, phone_number, specialty, certification_details, pricing_packages, image_url)

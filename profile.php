@@ -17,6 +17,15 @@ $stmt->execute();
 $user_result = $stmt->get_result();
 $user = $user_result->fetch_assoc();
 
+// Fetch subscription plans
+$subscriptions_sql = "SELECT plan_name FROM membership_plans";
+$subscriptions_result = $conn->query($subscriptions_sql);
+
+if ($subscriptions_result->num_rows === 0) {
+    die("Error: No subscription plans found in the database.");
+}
+
+
 // Fetch user inquiries
 $inquiries_sql = "SELECT * FROM inquiries WHERE user_id = ? ORDER BY created_at DESC";
 $stmt = $conn->prepare($inquiries_sql);
@@ -29,6 +38,7 @@ $inquiries_result = $stmt->get_result();
 <html lang="en">
 <head>
     <title>Profile</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="img/logoN.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
@@ -137,12 +147,12 @@ $inquiries_result = $stmt->get_result();
                     <input type="text" name="username" class="form-control" value="<?php echo htmlspecialchars($user['username']); ?>" required>
                 </div>
                 <div class="form-group">
-                    <label>fullname:</label>
-                    <input type="text" name="fullname" class="form-control" value="<?php echo htmlspecialchars($user['fullname']); ?>" required>
-                </div>
-                <div class="form-group">
                     <label>Email:</label>
                     <input type="email" name="email" class="form-control" value="<?php echo htmlspecialchars($user['email']); ?>" required>
+                </div>
+                <div class="form-group">
+                    <label>Full Name:</label>
+                    <input type="text" name="fullname" class="form-control" value="<?php echo htmlspecialchars($user['fullname'] ?? ''); ?>">
                 </div>
                 <div class="form-group">
                     <label>Phone Number:</label>
@@ -171,6 +181,18 @@ $inquiries_result = $stmt->get_result();
                 <div class="form-group">
                     <label>Profile Picture URL:</label>
                     <input type="text" name="image_url" class="form-control" value="<?php echo htmlspecialchars($user['image_url'] ?? ''); ?>">
+                </div>
+                <div class="form-group">
+                    <label>Subscription:</label>
+                    <select name="subscription" class="form-control">
+                        <option value="">Select Subscription</option>
+                        <?php while ($subscription = $subscriptions_result->fetch_assoc()): ?>
+                            <option value="<?php echo htmlspecialchars(strtolower($subscription['plan_name'])); ?>" 
+                                <?php echo ($user['subscription'] === strtolower($subscription['plan_name'])) ? 'selected' : ''; ?>>
+                                <?php echo htmlspecialchars($subscription['plan_name']); ?>
+                            </option>
+                        <?php endwhile; ?>
+                    </select>
                 </div>
                 <button type="submit" name="update-profile" class="btn btn-dark btn-block">Save Changes</button>
                 <button type="button" class="btn btn-secondary btn-block" onclick="toggleEditForm()">Cancel</button>

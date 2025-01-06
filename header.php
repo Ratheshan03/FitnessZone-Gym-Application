@@ -4,11 +4,11 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" sizes="32x32" href="img/logo.png"> <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="42x42" href="img/logoN.png">
     <title>FitZone Fitness Center</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"> 
@@ -18,71 +18,111 @@ session_start();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script> 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <style>
-        /* Global styles for the header */
+        /* General Styles */
         body {
             background: linear-gradient(to right, #2c2c2c, #1a1a1a);
             color: white;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
+
+        /* Navbar Styling */
         .navbar {
-            background: rgba(255, 255, 255, 0.2); /* Glassmorphism background */
-            backdrop-filter: blur(10px); /* Glassmorphism effect */
+            background: rgba(255, 255, 255, 0.1); /* Glassmorphism */
+            backdrop-filter: blur(10px);
             padding: 10px 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
-        .navbar-brand strong em {
-            font-size: 1.5rem;
+        .navbar-brand {
+            font-size: 1.8rem;
             color: #ffffff;
-        }
-        .navbar-nav .nav-link {
-            color: white !important;
-            padding: 10px 15px;
-        }
-        .navbar-nav .nav-link:hover {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 5px;
-            text-decoration: underline;
-        }
-        .navbar-nav .nav-item.active .nav-link {
-            color: #f8f9fa;
             font-weight: bold;
         }
+        .navbar-brand:hover {
+            color: #ff5252;
+            transition: color 0.3s;
+        }
+        .navbar-nav .nav-link {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #ff5252;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .nav-item.active .nav-link {
+            color: #ff5252;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
         .navbar-toggler-icon {
             background-color: white;
         }
-        .nav-item:last-child {
-            margin-right: 0;
+
+        /* Buttons */
+        .btn-outline-dark {
+            border: 2px solid #ff5252;
+            border-radius: 10px;
+            color: #ff5252;
+            transition: all 0.3s ease;
         }
-        /* Modal styling */
-        .modal-body h5 {
-            text-align: center;
+        .btn-outline-dark:hover {
+            background-color: #ff5252;
+            color: white;
         }
 
-        .modal-body h4{
-            color:rgb(0, 0, 0);
+        /* Modal Styling */
+        .modal-content {
+            background-color: rgba(0, 0, 0, 0.9);
+            border-radius: 10px;
+            color: white;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
-
-        .bg-danger, .bg-success {
-            margin-bottom: 20px;
+        .modal-header h4 {
+            font-size: 1.5rem;
+            color: #ff5252;
+            margin: 0;
+        }
+        .form-control {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid #555;
+        }
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #ff5252;
+            box-shadow: none;
+        }
+        .btn-dark {
+            background-color: #ff5252;
+            border: none;
+        }
+        .btn-dark:hover {
+            background-color: #ff3232;
+            transition: all 0.3s ease;
         }
     </style>
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-md navbar-light fixed-top">
-        <a class="navbar-brand" href="index.php">
-            <strong><em>FitZone</em></strong>
-        </a>
+    <nav class="navbar navbar-expand-md fixed-top">
+        <a class="navbar-brand" href="index.php">FitZone</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navi">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navi">
             <ul class="navbar-nav">
-                <!-- Always show navigation options -->
+                <!-- Always visible links -->
                 <li class="nav-item"><a class="nav-link" href="index.php#aboutus">About Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="index.php#facilities">Services</a></li>
                 <li class="nav-item"><a class="nav-link" href="blogs.php">Blogs</a></li>
                 <li class="nav-item"><a class="nav-link" href="appointments.php">Bookings</a></li>
-                <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li> <!-- New Contact Us link -->
+                <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <li class="nav-item"><a class="nav-link" href="appointments.php">Book Appointment</a></li>
                     <li class="nav-item"><a class="nav-link" href="view_appointments.php">View Appointments</a></li>
@@ -98,8 +138,8 @@ session_start();
             <ul class="navbar-nav ml-auto">
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
-                    <form class="form-inline" action="includes/logout.inc.php" method="post">
-                        <button type="submit" name="logout-submit" class="btn btn-outline-light">Logout</button>
+                    <form action="includes/logout.inc.php" method="post" class="form-inline">
+                        <button type="submit" name="logout-submit" class="btn btn-outline-dark ml-2">Logout</button>
                     </form>
                 <?php else: ?>
                     <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#myModal_reg">Sign Up</a></li>
