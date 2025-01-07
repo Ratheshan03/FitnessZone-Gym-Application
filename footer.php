@@ -16,7 +16,7 @@
             <!-- Copyright Section -->
             <div class="col-sm-12 text-center">
                 <p class="mb-2" style="color: #b5b5b5; font-size: 14px;">
-                    <b>&copy; 2025 FitZone Fitness Center</b>
+                    <b>All rights reserved &copy; 2025 FitZone Fitness Center</b>
                 </p>
                 <p style="color: #b5b5b5; font-size: 14px;">
                     <i class="fa fa-phone"></i> 076-123-4567 &nbsp; | &nbsp; 

@@ -34,36 +34,29 @@ require "includes/dbh.inc.php"; // Database connection
             } else {
                 echo '<p class="text-center w-100" style="color: #d9d9d9;">No blogs available at the moment. Check back later!</p>';
             }
-
             $conn->close(); // Close the database connection
             ?>
         </div>
     </div>
 </section>
-
-<!-- Custom CSS for Blogs -->
 <style>
     .blogs-section {
         background: linear-gradient(to bottom, #1a1a1a, #111);
         margin-top: 50px;
     }
-
     .card.blog-card {
         transition: transform 0.3s, box-shadow 0.3s;
     }
-
     .card.blog-card:hover {
         transform: translateY(-10px);
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
-
     .btn-light {
         background: #ff5252;
         color: white;
         font-weight: bold;
         transition: all 0.3s;
     }
-
     .btn-light:hover {
         background: #ff3232;
         color: white;

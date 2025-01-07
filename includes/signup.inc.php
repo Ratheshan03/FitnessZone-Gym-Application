@@ -1,5 +1,4 @@
 <?php
-
 function between($val, $x, $y) {
     $val_len = strlen($val);
     return ($val_len >= $x && $val_len <= $y) ? TRUE : FALSE;

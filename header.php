@@ -47,6 +47,7 @@ session_start();
             font-weight: 500;
             margin-right: 10px;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
         .navbar-nav .nav-link:hover {
             color: #ff5252;
